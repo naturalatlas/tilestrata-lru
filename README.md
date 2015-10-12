@@ -1,6 +1,6 @@
 # tilestrata-lru
 [![NPM version](http://img.shields.io/npm/v/tilestrata-lru.svg?style=flat)](https://www.npmjs.org/package/tilestrata-lru)
-[![Build Status](http://img.shields.io/travis/naturalatlas/tilestrata-lru/master.svg?style=flat)](https://travis-ci.org/naturalatlas/tilestrata-lru)
+[![Build Status](https://travis-ci.org/naturalatlas/tilestrata-lru.svg)](https://travis-ci.org/naturalatlas/tilestrata-lru)
 [![Coverage Status](http://img.shields.io/codecov/c/github/naturalatlas/tilestrata-lru/master.svg?style=flat)](https://codecov.io/github/naturalatlas/tilestrata-lru)
 
 A basic [TileStrata](https://github.com/naturalatlas/tilestrata) plugin for caching tiles to memory. Use cautiously – out of memory crashes are entirely possible if not configured carefully. If you want to share a single LRU across multiple layers and routes, that's just fine (the cache keys account for that).

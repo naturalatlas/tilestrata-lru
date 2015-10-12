@@ -4,6 +4,9 @@ var lru = require('../index.js');
 var assert = require('chai').assert;
 
 describe('Cache Implementation "lru"', function() {
+	it('should set name', function() {
+		assert.equal(lru().name, 'lru');
+	});
 	it('should allow filesize strings', function(done) {
 		var cache = lru({size: '10kb'});
 		var buffer = new Buffer(1024*20);

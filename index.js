@@ -6,6 +6,8 @@ function key(req) {
 }
 
 module.exports = function(opts) {
+	opts = opts || {};
+
 	var lruopts = {max: 6};
 	if (typeof opts.size === 'string') {
 		lruopts.max = filesizeParser(opts.size);
@@ -19,6 +21,7 @@ module.exports = function(opts) {
 	var cache = new SyncCache(lruopts);
 
 	return {
+		name: 'lru',
 		get: function(server, req, callback) {
 			var item = cache.get(key(req));
 			if (item) return callback(null, item.buffer, item.headers);
