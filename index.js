@@ -2,7 +2,7 @@ var SyncCache = require('active-cache/sync');
 var filesizeParser = require('filesize-parser');
 
 function key(req) {
-	return req.z+','+req.x+','+req.y+','+req.layer+','+req.filename;
+	return req.z+','+req.x+','+req.y+','+req.layer+','+req.filename+','+req.headers['accept-encoding'];
 }
 
 module.exports = function(opts) {
