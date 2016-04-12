@@ -17,12 +17,20 @@ var lru = require('tilestrata-lru');
 // set total size limit of cache
 server.layer('mylayer').route('tile.pbf')
     .use(/* some provider */)
-    .use(lru({size: '20mb' ttl: 30})); // ttl in seconds
+    .use(lru({size: '20mb', ttl: 30})); // ttl in seconds
 
 // or set a total number of items
 server.layer('mylayer').route('tile.pbf')
     .use(/* some provider */)
     .use(lru({size: 20, ttl: 30}));
+
+// set a function for the cache key
+server.layer('mylayer').route('tile.pbf')
+    .use(/* some provider */)
+    .use(lru({key: function(req) {
+        var compressed = /gzip|deflate/.test(req.headers['accept-encoding']) ? 1 : 0;
+        return req.z+','+req.x+','+req.y+','+req.layer+','+req.filename+','+compressed;
+    }}));
 ```
 
 ## Contributing

@@ -1,12 +1,12 @@
 var SyncCache = require('active-cache/sync');
 var filesizeParser = require('filesize-parser');
 
-function key(req) {
-	return req.z+','+req.x+','+req.y+','+req.layer+','+req.filename+','+req.headers['accept-encoding'];
-}
-
 module.exports = function(opts) {
 	opts = opts || {};
+
+	var key = opts.key || function(req) {
+		return req.z+','+req.x+','+req.y+','+req.layer+','+req.filename;
+	};
 
 	var lruopts = {max: 6};
 	if (typeof opts.size === 'string') {
